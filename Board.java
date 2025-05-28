@@ -25,12 +25,4 @@ public class Board implements Renderable {
             }
         }
     }
-
-    public void forEach(Consumer<Card,int,int> func) {
-        for (int i = 0; i < cards.length; i++) {
-            for (int j = 0; j < cards[i].length; j++) {
-                func.accept(cards[i][j]);
-            }
-        }
-    }
 }
