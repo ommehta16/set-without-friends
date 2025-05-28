@@ -1,7 +1,7 @@
 import java.util.function.Consumer;
 
 public class Board implements Renderable {
-    Card[][] cards;
+    public Card[][] cards;
 
     public Board() {
         cards = new Card[3][3];
@@ -19,6 +19,14 @@ public class Board implements Renderable {
     }
 
     public void forEach(Consumer<Card> func) {
+        for (int i = 0; i < cards.length; i++) {
+            for (int j = 0; j < cards[i].length; j++) {
+                func.accept(cards[i][j]);
+            }
+        }
+    }
+
+    public void forEach(Consumer<Card,int,int> func) {
         for (int i = 0; i < cards.length; i++) {
             for (int j = 0; j < cards[i].length; j++) {
                 func.accept(cards[i][j]);
