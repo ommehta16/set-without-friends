@@ -25,4 +25,10 @@ public class Board implements Renderable {
             }
         }
     }
+
+    public void onMouse(double x, double y, boolean clicked) {
+        forEach((Card c) -> {
+            c.onMouse(x, y, clicked);
+        });
+    }
 }

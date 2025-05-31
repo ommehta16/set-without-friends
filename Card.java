@@ -5,6 +5,7 @@ public class Card implements Renderable {
     public int color;
     public int shape;
     public int fill;
+    public boolean hovered;
 
     public double x, y, w, h; // (x,y) is center
 
@@ -40,5 +41,20 @@ public class Card implements Renderable {
     public void close() {
         // delete
         active.remove(this);
+    }
+
+    public void onMouse(double x, double y, boolean clicked) {
+        double l = this.x;
+        double r = this.x + this.w;
+        double b = this.y;
+        double t = this.y + this.h;
+
+        if (!(l < x && x < r && b < y && y < t)) {
+            hovered = false;
+            return;
+        }
+        hovered = true;
+        // ok what tf do we do on hover
+
     }
 }
