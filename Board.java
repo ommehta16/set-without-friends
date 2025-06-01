@@ -8,14 +8,15 @@ public class Board implements Renderable {
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++) {
                 cards[i][j] = new Card();
-                cards[i][j].x = j * 33 + cards[i][j].w;
-                cards[i][j].y = i * 33 + cards[i][j].h;
+                cards[i][j].x = 50 + (j - 1) * 33;
+                cards[i][j].y = 60 + (i - 1) * 25;
             }
-
     }
 
     public void render() {
-        this.forEach((Card card) -> card.render());
+        this.forEach((Card card) -> {
+            card.render();
+        });
     }
 
     public void forEach(Consumer<Card> func) {
@@ -27,8 +28,16 @@ public class Board implements Renderable {
     }
 
     public void onMouse(double x, double y, boolean clicked) {
-        forEach((Card c) -> {
+        this.forEach((Card c) -> {
             c.onMouse(x, y, clicked);
         });
+    }
+
+    public void onAddRow() {
+        StdDraw.setCanvasSize(500, 700);
+    }
+
+    public void onRemoveRow() {
+        StdDraw.setCanvasSize(500, 500);
     }
 }
